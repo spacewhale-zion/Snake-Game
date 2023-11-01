@@ -47,6 +47,37 @@ function resetGame() {
     main(); 
 }
 
+
+
+const toggleAudioButton = document.getElementById("toggleAudioButton");
+
+// Variable to keep track of mute state
+let isMuted = false;
+
+// Function to toggle mute/unmute state
+function toggleAudio() {
+    isMuted = !isMuted;
+    if (isMuted) {
+        // Mute all audio elements
+        foodSound.muted = true;
+        gameOverSound.muted = true;
+        moveSound.muted = true;
+        musicSound.muted = true;
+        toggleAudioButton.textContent = "Unmute Audio";
+    } else {
+        // Unmute all audio elements
+        foodSound.muted = false;
+        gameOverSound.muted = false;
+        moveSound.muted = false;
+        musicSound.muted = false;
+        toggleAudioButton.textContent = "Mute Audio";
+    }
+}
+
+// Add click event listener to the toggle audio button
+toggleAudioButton.addEventListener("click", toggleAudio);
+
+
 function gameEngine(){
     // Part 1: Updating the snake array & Food
     if(isCollide(snakeArr)){
